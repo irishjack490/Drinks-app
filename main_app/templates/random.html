@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="underline center-align">Random Drinks</h1>
+<div class="row">
+    {% for drink in drinks %}
+    <div class="card col s4 center-align">
+        <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="{{ drink.strDrinkThumb }}">
+        </div>
+        <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">{{ drink.strDrink }}</span>
+            <p><a href="{% url 'show' drink.idDrink %}" class="seemore">See more</a></p>
+        </div>
+        <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Ingredients<i class="material-icons right">close</i></span>
+            <ul>
+                {% if drink.strIngredient1 %} 
+                    <p class="sans">{{ drink.strIngredient1 }}</p>
+                {% else %}
+                        <p class="sans"></p>
+                {% endif %}
+            </ul>
+            <ul>
+                {% if drink.strIngredient2 %}  
+                    <p class="sans">{{ drink.strIngredient2 }}</p>
+                {% else %}
+                        <p class="sans"></p>
+                {% endif %} 
+            </ul>
+            <ul>
+                {% if drink.strIngredient3 %}
+                    <p class="sans">{{ drink.strIngredient3 }}</p>
+                {% else %}
+                        <p class="sans"></p>
+                {% endif %} 
+            </ul>
+            <ul>
+                {% if drink.strIngredient4 %}
+                    <p class="sans">{{ drink.strIngredient4 }}</p>
+                {% else %}
+                        <p class="sans"></p>
+                {% endif %} 
+            </ul>
+            <ul>
+                {% if drink.strIngredient5 %}
+                    <p class="sans">{{ drink.strIngredient5 }}</p>
+                {% else %}
+                        <p class="sans"></p>
+                {% endif %} 
+            </ul>
+            <ul>
+                {% if drink.strIngredient6 %}  
+                    <p class="sans">{{ drink.strIngredient6 }}</p>
+                {% else %}
+                        <p class="sans"></p>
+                {% endif %} 
+            </ul>
+            <ul>
+                {% if drink.strIngredient7 %}  
+                    <p class="sans">{{ drink.strIngredient7 }}</p>
+                {% else %}
+                        <p class="sans"></p>
+                {% endif %} 
+            </ul>
+            <ul>
+                {% if drink.strIngredient8 %}  
+                    <p class="sans">{{ drink.strIngredient8 }}</p>
+                {% else %}
+                        <p class="sans"></p>
+                {% endif %} 
+            </ul>
+            <ul>
+                {% if drink.strIngredient9 %}  
+                    <p class="sans">{{ drink.strIngredient9 }}</p>
+                {% else %}
+                        <p class="sans"></p>
+                {% endif %} 
+            </ul>
+            <ul>
+                {% if drink.strIngredient10 %}
+                    <p class="sans">{{ drink.strIngredient10 }}</p>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

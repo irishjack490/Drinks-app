@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+  .drink-details {
+    text-align: center;
+  }
+  .drink-details h1 {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .drink-image {
+    display: block;
+    margin-right: 40px;
+    margin-bottom: 20%;
+    width: 45%;
+    margin-top: 30px;
+    float: left;
+  }
+  .ingredients {
+    text-align: center;
+    display: inline-block;
+    margin-top: 150px;
+    margin-left: 30px;
+  }
+  .extra-info {
+    text-align: left;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 180px;
+    margin-left: 100px;
+    
+  }
+  .extra-info p {
+    font-size: 20px;
+  }
+  .instructions {
+    text-align: center;
+    margin-top: 50px;
+    position: absolute;
+    bottom: 0;
+    left: 60%;
+    transform: translateX(-50%);
+    width: 60%;
+    font-size: 20px
+  }
+  .green-button, input.green-button, form.green-button {
+    margin-top: 7vh;
+  }
+
+
+</style>
+<div class="drink-details">
+  <h1>{{ response.drinks.0.strDrink }}</h1>
+  <img src="{{ response.drinks.0.strDrinkThumb }}" class="drink-image" alt="Drink Image">
+  <div class="ingredients">
+    <h3>Ingredients:</h3>
+    <ul>
+      {% if response.drinks.0.strMeasure1 and response.drinks.0.strIngredient1 %}
+      <li>
+        <span class="ingredient sans">{{ response.drinks.0.strMeasure1 }}</span>
+        {{ response.drinks.0.strIngredient1 }}
+      </li>
+      {% endif %}
+      {% if response.drinks.0.strMeasure2 and response.drinks.0.strIngredient2 %}
+      <li>
+        <span class="ingredient sans">{{ response.drinks.0.strMeasure2 }}</span>
+        {{ response.drinks.0.strIngredient2 }}
+      </li>
+      {% endif %}
+      {% if response.drinks.0.strMeasure3 and response.drinks.0.strIngredient3 %}
+      <li>
+        <span class="ingredient sans">{{ response.drinks.0.strMeasure3 }}</span>
+        {{ response.drinks.0.strIngredient3 }}
+      </li>
+      {% endif %}
+      {% if response.drinks.0.strMeasure4 and response.drinks.0.strIngredient4 %}
+      <li>
+        <span class="ingredient sans">{{ response.drinks.0.strMeasure4 }}</span>
+        {{ response.drinks.0.strIngredient4 }}
+      </li>
+      {% endif %}
+      {% if response.drinks.0.strMeasure5 and response.drinks.0.strIngredient5 %}
+      <li>
+        <span class="ingredient sans">{{ response.drinks.0.strMeasure5 }}</span>
+        {{ response.drinks.0.strIngredient5 }}
+      </li>
+    {% endif %}
+    {% if response.drinks.0.strMeasure6 and response.drinks.0.strIngredient6 %}
+    <li>
+      <span class="ingredient sans">{{ response.drinks.0.strMeasure6 }}</span>
+      {{ response.drinks.0.strIngredient6 }}
+    </li>
+  {% endif %}
+  {% if response.drinks.0.strMeasure7 and response.drinks.0.strIngredient7 %}
+  <li>
+    <span class="ingredient sans">{{ response.drinks.0.strMeasure7 }}</span>
+    {{ response.drinks.0.strIngredient7 }}
+  </li>
+{% endif %}
+{% if response.drinks.0.strMeasure8 and response.drinks.0.strIngredient8 %}
+<li>
+  <span class="ingredient sans">{{ response.drinks.0.strMeasure8 }}</span>
+  {{ response.drinks.0.strIngredient8 }}
+</li>
+{% endif %}
+{% if response.drinks.0.strMeasure9 and response.drinks.0.strIngredient9 %}
+<li>
+  <span class="ingredient sans">{{ response.drinks.0.strMeasure9 }}</span>
+  {{ response.drinks.0.strIngredient9 }}
+</li>
+{% endif %}
+{% if response.drinks.0.strMeasure10 and response.drinks.0.strIngredient10 %}
+<li>
+  <span class="ingredient sans">{{ response.drinks.0.strMeasure10 }}</span>
+  {{ response.drinks.0.strIngredient10 }}
+</li>
+{% endif %}
+{% if response.drinks.0.strMeasure11 and response.drinks.0.strIngredient11 %}
+<li>
+  <span class="ingredient sans">{{ response.drinks.0.strMeasure11 }}</span>
+  {{ response.drinks.0.strIngredient11 }}
+</li>
+{% endif %}
+{% if response.drinks.0.strMeasure12 and response.drinks.0.strIngredient12 %}
+<li>
+  <span class="ingredient sans">{{ response.drinks.0.strMeasure12 }}</span>
+  {{ response.drinks.0.strIngredient12 }}
+</li>
+{% endif %}
+{% if response.drinks.0.strMeasure13 and response.drinks.0.strIngredient13 %}
+<li>
+  <span class="ingredient sans">{{ response.drinks.0.strMeasure13 }}</span>
+  {{ response.drinks.0.strIngredient13 }}
+</li>
+{% endif %}
+{% if response.drinks.0.strMeasure14 and response.drinks.0.strIngredient14 %}
+<li>
+  <span class="ingredient sans">{{ response.drinks.0.strMeasure14 }}</span>
+  {{ response.drinks.0.strIngredient14 }}
+</li>
+{% endif %}
+{% if response.drinks.0.strMeasure15 and response.drinks.0.strIngredient15 %}
+<li>
+  <span class="ingredient sans">{{ response.drinks.0.strMeasure15 }}</span>
+  {{ response.drinks.0.strIngredient15 }}
+</li>
+{% endif %}
+    </ul>
+  </div>
+  <div class="extra-info sans">
+    <h4>Alcoholic:</h4>
+    <p class="sans">{{ response.drinks.0.strAlcoholic }}</p>
+    <h4>Category:</h4>
+    <p class="sans">{{ response.drinks.0.strCategory }}</p>
+  </div>
+</div>
+<div class="instructions sans">
+  <h3>Instructions:</h3>
+  <p class="sans">{{ response.drinks.0.strInstructions }}</p>
+</div>
+
+{% if user.is_authenticated %}
+<form class="center-align green-button" action="{% url 'shopping_create'  %}" method="POST">
+  {% csrf_token %}
+  <input hidden type="text" name="user" value="{{ user.id }}">
+  <input hidden type="text" name="name" value="{{ response.drinks.0.strDrink }}">
+  <input hidden type="text" name="drink_id" value="{{ response.drinks.0.idDrink }}">
+  <input hidden type="text" name="drink_image" value="{{ response.drinks.0.strDrinkThumb }}">
+  <input hidden type="text" name="strIngredient1" value="{{ response.drinks.0.strIngredient1 }}">
+  <input hidden type="text" name="strIngredient2" value="{{ response.drinks.0.strIngredient2 }}">
+  <input hidden type="text" name="strIngredient3" value="{{ response.drinks.0.strIngredient3 }}">
+  <input hidden type="text" name="strIngredient4" value="{{ response.drinks.0.strIngredient4 }}">
+  <input hidden type="text" name="strIngredient5" value="{{ response.drinks.0.strIngredient5 }}">
+  <input hidden type="text" name="strIngredient6" value="{{ response.drinks.0.strIngredient6 }}">
+  <input hidden type="text" name="strIngredient7" value="{{ response.drinks.0.strIngredient7 }}">
+  <input hidden type="text" name="strIngredient8" value="{{ response.drinks.0.strIngredient8 }}">
+  <input hidden type="text" name="strIngredient9" value="{{ response.drinks.0.strIngredient9 }}">
+  <input hidden type="text" name="strIngredient10" value="{{ response.drinks.0.strIngredient10 }}">
+  <input hidden type="text" name="strIngredient11" value="{{ response.drinks.0.strIngredient11 }}">
+  <input hidden type="text" name="strIngredient12" value="{{ response.drinks.0.strIngredient12 }}">
+  <input hidden type="text" name="strIngredient13" value="{{ response.drinks.0.strIngredient13 }}">
+  <input hidden type="text" name="strIngredient14" value="{{ response.drinks.0.strIngredient14 }}">
+  <input hidden type="text" name="strIngredient15" value="{{ response.drinks.0.strIngredient15 }}">
+  <input type="submit" class="btn btn-outline-dark" value="Add to Shopping List">
+</form>
+{% endif %}
+
+{% endblock %}

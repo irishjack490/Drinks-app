@@ -1,0 +1,105 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drinks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sevillana&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            background-color: rgb(255, 242, 232);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        h1.underline{
+            text-decoration: underline solid 3px;
+        }
+        nav{
+            background-color: black
+        }
+        footer.nav{
+            background-color: black;
+        }
+        *{
+            font-family: 'Sevillana', cursive;
+            font: bold;
+        }
+        a.seemore{
+            font-family: "arial", Sans-serif;
+            font: bold;
+            color: rgb(130, 175, 171);
+        }
+        p.sans, h5.sans, div.sans, h1.sans, span.sans, h4.sans, a.sans  {
+            font-family: "arial", Sans-serif; 
+            font: bold;
+        }
+        main {
+            flex: 1 0 auto;
+        }
+        img.logo{
+            width: 13vh;
+        }
+        h5.indent{
+            text-indent: 30pt;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar-fixed">
+        <nav class="nav">
+            <div class="nav-wrapper">
+                <ul>
+                    <li>
+                        <a href="/" class="left brand-logo">
+                            &nbsp;&nbsp;Drinks
+                        </a>
+                    </li>
+                </ul>
+                <ul class="right">
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'random' %}">Random</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'shopping_index' %}">Custom Drinks</a></li>
+                        <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}"> Login</a></li>
+                        <li><a href="{% url 'signup' %}">Signup</a></li>
+                    {% endif %}
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        {% block content %}
+
+        {% endblock %}
+    </main>
+    <footer class="page-footer nav">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text sans">Drinks App</h5>
+                    <p class="sans">Special thanks to the CocktailDB API</p>
+                </div>
+                <div class="col l4 offset-l2 s12  right-align">
+                    <img class=logo src="../static/images/Logo.png">
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container sans">
+            © 2024 Copyright
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

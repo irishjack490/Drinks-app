@@ -1,0 +1,3 @@
+API CALL:
+
+Because we have premium, this is the start of the URL: https://www.thecocktaildb.com/api/json/v2/{API KEY}/
